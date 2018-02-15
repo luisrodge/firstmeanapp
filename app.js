@@ -27,10 +27,20 @@ const users = require('./routes/users');
 // Server port number
 const port = 3000;
 
+// Cors middleware for cross origin requests
 app.use(cors());
+
 // Set static/client side folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+// body-parser middleware for parsing incoming 
 app.use(bodyParser.json());
+
+// Passport middlewares for authentication (jwt)
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 // User routes (/users)
 app.use('/users', users);
