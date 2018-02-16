@@ -45,6 +45,7 @@ module.exports.addUser = function(newUser, callback) {
     });
 }
 
+// Ensure that the submitted password matches the hashed password in the db
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
         if (err) throw err;

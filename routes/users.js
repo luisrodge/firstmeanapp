@@ -36,6 +36,7 @@ router.post('/authenticate', (req, res, next) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
+                // Create the jwt token with the signed in user object and expiree date
                 const token = jwt.sign({data: user}, config.secret, {
                    expiresIn: 604800 // 1 week 
                 });

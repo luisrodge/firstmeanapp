@@ -10,6 +10,7 @@ export class AuthService {
 
   constructor(private http: Http) { }
 
+  // Issue post request to register a new user
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -17,6 +18,7 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  // Issue post request to authenticate user with submitted request body
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -24,6 +26,7 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  // Makes a GET request to retrieve user profile data
   getProfile() {
     let headers = new Headers();
     this.loadToken();
@@ -33,6 +36,8 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  // Invoked when a user successfully authenticates
+  // Store the token and returned user object in local storage
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
@@ -40,15 +45,18 @@ export class AuthService {
     this.user = user;
   }
 
+  // Load the jwt token from local storage
   loadToken() {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
   }
 
+  // Checks if the stored token has expired
   loggedIn() {
     return tokenNotExpired('id_token');
   }
 
+  // Logout the user and enull the stored token and user object
   logout() {
     this.authToken = null;
     this.user = null;

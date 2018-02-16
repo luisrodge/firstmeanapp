@@ -22,6 +22,7 @@ mongoose.connection.on('error', (err) => {
 // Initialize express
 const app = express();
 
+// User routes 
 const users = require('./routes/users');
 
 // Server port number
@@ -40,6 +41,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport for authentication
 require('./config/passport')(passport);
 
 // User routes (/users)
