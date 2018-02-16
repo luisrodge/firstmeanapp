@@ -2,8 +2,11 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">First MEAN App</h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <a [routerLinkActive]="['active']" [routerLink]="['/']" [routerLinkActiveOptions]="{ecxact:true}" class="p-2 text-dark">Home</a>
-      <a [routerLinkActive]="['active']" [routerLink]="['/login']" [routerLinkActiveOptions]="{ecxact:true}" class="p-2 text-dark">Login</a>
-      <a [routerLinkActive]="['active']" [routerLink]="['/register']" [routerLinkActiveOptions]="{ecxact:true}" class="p-2 text-dark">Register</a>
+      <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLink]="['/dashboard']" [routerLinkActiveOptions]="{ecxact:true}" class="p-2 text-dark">Dashboard</a>
+      <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLink]="['/profile']" [routerLinkActiveOptions]="{ecxact:true}" class="p-2 text-dark">Profile</a>
+      <a *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLink]="['/login']" [routerLinkActiveOptions]="{ecxact:true}" class="p-2 text-dark">Login</a>
+      <a *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLink]="['/register']" [routerLinkActiveOptions]="{ecxact:true}" class="p-2 text-dark">Register</a>
+      <a *ngIf="authService.loggedIn()" (click)="onLogoutClick()" href="#" class="p-2 text-dark">Logout</a>
     </nav>
   </div>
 

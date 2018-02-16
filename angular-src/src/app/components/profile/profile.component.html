@@ -1,3 +1,3 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user">
+  <h2 class="text-center">Welcome, {{user.name}} <br/>aka<br/> {{user.username}}</h2>
+</div>
