@@ -9,7 +9,7 @@ Tha app also implements at a basic level the angular router for routing, passpor
 authentication, auth guard for protecting unauthorized access to specified resources, and of course, 
 express as the backend framework.
 
-## Stack Specifcations
+## Stack Specifications
 
 1. MongoDb v3.6
 2. Epxress v4.16.2
